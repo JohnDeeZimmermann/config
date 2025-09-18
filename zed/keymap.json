@@ -1,0 +1,123 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // Tab things. Almost as good as harpoon.
+      "ctrl-1": ["pane::ActivateItem", 0],
+      "ctrl-2": ["pane::ActivateItem", 1],
+      "ctrl-3": ["pane::ActivateItem", 2],
+      "ctrl-4": ["pane::ActivateItem", 3],
+      "ctrl-5": ["pane::ActivateItem", 4],
+      "ctrl-6": ["pane::ActivateItem", 5],
+      "ctrl-7": ["pane::ActivateItem", 6],
+      "ctrl-8": ["pane::ActivateItem", 7],
+      "ctrl-9": ["pane::ActivateItem", 8],
+
+      // Leader actions
+      "space f f": "file_finder::Toggle", // Find files
+      "space d": ["workspace::SendKeystrokes", "\" _ d"],
+      "space shift-d": ["workspace::SendKeystrokes", "\" _ D"],
+      "space c": ["workspace::SendKeystrokes", "\" _ c"],
+      "space shift-c": ["workspace::SendKeystrokes", "\" _ C"],
+      "space x": ["workspace::SendKeystrokes", "\" _ x"],
+      "space shift-x": ["workspace::SendKeystrokes", "\" _ X"],
+      "space": null,
+
+      // Method navigation
+      "ö m": "vim::NextMethodStart",
+      "Ö M": "vim::NextMethodEnd",
+      "Ö m": "vim::NextMethodEnd",
+      "ä m": "vim::PreviousMethodStart",
+      "Ä M": "vim::PreviousMethodEnd",
+      "Ä m": "vim::PreviousMethodEnd",
+      "ö ö": "vim::NextSectionStart",
+      "Ö Ö": "vim::NextSectionEnd",
+      "Ö ö": "vim::NextSectionEnd",
+      "ä ä": "vim::PreviousSectionStart",
+      "Ä Ä": "vim::PreviousSectionEnd",
+      "Ä ä": "vim::PreviousSectionEnd",
+      "ctrl-ä": "vim::SelectLargerSyntaxNode",
+      "ctrl-ö": "vim::SelectSmallerSyntaxNode",
+
+      // Bookmarks
+      "space n": "vim::ToggleMarksView",
+      "n": ["workspace::SendKeystrokes", "`"],
+      "N": ["workspace::SendKeystrokes", "`"]
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "secondary-space": "editor::ShowCompletions",
+      "secondary-p": "editor::ShowSignatureHelp",
+      "secondary-e": "file_finder::Toggle",
+      "secondary-i": "assistant::InlineAssist"
+    }
+  },
+  {
+    "context": "",
+    "bindings": {
+      // Window management
+      "secondary-ctrl-r": "workspace::ToggleRightDock",
+      "secondary-ctrl-l": "workspace::ToggleLeftDock",
+      "secondary-ctrl-b": "workspace::ToggleBottomDock",
+      "secondary-shift-i": "agent::ToggleFocus",
+      "secondary-shift-r": "task::Spawn"
+    }
+  },
+  {
+    "context": "(Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting) || ProjectPanel",
+    "bindings": {
+      "space f t": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "ProjectPanel && !editing",
+    "bindings": {
+      "j": ["workspace::SendKeystrokes", "down"],
+      "k": ["workspace::SendKeystrokes", "up"]
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == visual) && extension == tex",
+    "bindings": {
+      "secondary-b": [
+        "workspace::SendKeystrokes",
+        "c \\textbf{ cmd-v } escape"
+      ],
+      "secondary-k": [
+        "workspace::SendKeystrokes",
+        "c \\textit{ cmd-v } escape"
+      ],
+      "secondary-m": ["workspace::SendKeystrokes", "c \\( cmd-v \\) escape"],
+      "secondary-shift-m": [
+        "workspace::SendKeystrokes",
+        "c \\[ cmd-v \\] escape"
+      ],
+      "secondary-ctrl-m": [
+        "workspace::SendKeystrokes",
+        "c \\begin{equation} enter tab cmd-v enter \\end{equation} escape"
+      ]
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == insert) && extension == tex",
+    "bindings": {
+      "cmd-b": ["workspace::SendKeystrokes", "\\textbf{} left"],
+      "cmd-k": ["workspace::SendKeystrokes", "\\textit{} left"],
+      "secondary-m": ["workspace::SendKeystrokes", "\\(\\) left left"],
+      "secondary-shift-m": ["workspace::SendKeystrokes", "\\[\\] left left"],
+      "secondary-ctrl-m": [
+        "workspace::SendKeystrokes",
+        "\\begin{equation} enter enter \\end{equation} up tab"
+      ]
+    }
+  }
+]

@@ -1,0 +1,217 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "context_servers": {
+    "mcp-server-context7": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {
+        "default_minimum_tokens": "10000"
+      }
+    }
+  },
+  "show_edit_predictions": false,
+  "languages": {
+    "Rust": {
+      "show_edit_predictions": false
+    },
+    "Java": {
+      "show_edit_predictions": true,
+      "use_autoclose": true,
+      "auto_indent_on_paste": true,
+      "formatter": {
+        "external": {
+          "command": "clang-format",
+          "arguments": ["--style=file", "--assume-filename={buffer_path}"]
+        }
+      }
+    },
+    "LaTeX": {
+      "show_edit_predictions": true,
+      "language_servers": ["codebook", "..."],
+      "formatter": "language_server"
+    },
+    "C": {
+      "show_edit_predictions": false
+    },
+    "JSONC": {
+      "show_edit_predictions": false
+    },
+    "Zig": {
+      "show_edit_predictions": false
+    },
+    "C++": {
+      "show_edit_predictions": false,
+      "tab_size": 4,
+      "wrap_guides": [100],
+      "formatter": {
+        "external": {
+          "command": "clang-format",
+          "arguments": ["--style=file", "--assume-filename={buffer_path}"]
+        }
+      }
+    }
+  },
+  "lsp": {
+    "clangd": {
+      "binary": {
+        "path": "/usr/bin/clangd",
+        "arguments": [
+          "--query-driver=/opt/jdz/zig++",
+          "--function-arg-placeholders=0"
+        ]
+      }
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        // get more cargo-less diagnostics from rust-analyzer,
+        // which might include false-positives (those can be turned off by their names)
+        "diagnostics": {
+          "experimental": {
+            "enable": true
+          }
+        },
+        "checkOnSave": true,
+        "cargo": {
+          "allTargets": true
+        },
+        "check": {
+          "workspace": true
+        }
+      }
+    },
+    "texlab": {
+      "settings": {
+        "texlab": {
+          "latexFormatter": "latexindent",
+          "latexindent": {
+            "modifyLineBreaks": true,
+            "replacement": null,
+            "local": "/Users/johnzimmermann/.config/latexindent/latexindent.yaml"
+          }
+        }
+      }
+    },
+    "ltex": {
+      "settings": {
+        "ltex": {
+          "checkFrequency": "edit"
+        }
+      }
+    }
+  },
+  "base_keymap": "JetBrains",
+  "buffer_font_family": "Comic Code Ligatures",
+  "vim_mode": true,
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  "vertical_scroll_margin": 12,
+  "scroll_beyond_last_line": "one_page",
+  "agent": {
+    "profiles": {
+      "ask": {
+        "name": "Ask",
+        "tools": {
+          "contents": true,
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "thinking": true,
+          "web_search": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "mcp-server-context7": {
+            "tools": {
+              "get-library-docs": true,
+              "resolve-library-id": true
+            }
+          }
+        }
+      }
+    },
+    "default_profile": "ask",
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    },
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-thinking"
+    },
+    "commit_message_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    }
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "wrap_guides": [120],
+  "ui_font_size": 16,
+  "buffer_font_size": 17.0,
+  "terminal": {
+    "font_size": 13
+  },
+  "theme": {
+    "mode": "system",
+    "dark": "Catppuccin Macchiato",
+    "light": "One Light"
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": true
+    }
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true
+  },
+  "icon_theme": {
+    "mode": "system",
+    "dark": "Catppuccin Mocha",
+    "light": "Catppuccin Latte"
+  },
+  "format_on_save": "off",
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 5000
+    }
+  },
+  "title_bar": {
+    "show_branch_icon": true
+  },
+  // Editor toolbar related settings
+  "toolbar": {
+    "breadcrumbs": false, // Whether to show breadcrumbs.
+    "quick_actions": false, // Whether to show quick action buttons.
+    "selections_menu": false, // Whether to show the Selections menu
+    "agent_review": false, // Whether to show agent review buttons
+    "code_actions": false // Whether to show code action buttons
+  },
+  "agent_font_size": 16.0,
+  "project_panel": {
+    "indent_size": 15,
+    "dock": "right"
+  }
+}
