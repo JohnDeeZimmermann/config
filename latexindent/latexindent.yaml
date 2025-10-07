@@ -1,0 +1,10 @@
+defaultIndent: '  '
+modifyLineBreaks:
+    textWrapOptions:
+        columns: 80
+        multipleSpacesToSingle: 1
+    blocksEndBefore:
+        commentOnOwnLine: 1               # 0/1
+        verbatim: 1                       # 0/1
+        filecontents: 1                   # 0/1
+        other: \\begin\{|\\\[|\\end\{ 
