@@ -17,20 +17,19 @@ require("auto_dark_settings")
 -- Use a group to prevent duplicate autocommands on reload
 vim.api.nvim_create_augroup('NvimConfigReload', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
-    group = 'NvimConfigReload',
-    pattern = vim.fn.stdpath('config') .. "/init.lua", -- Use stdpath for config
-    callback = function()
-        -- Use pcall to catch errors during source
-        local status_ok, _ = pcall(vim.cmd, 'source %')
-        if status_ok then
-            vim.notify("init.lua reloaded successfully!", vim.log.levels.INFO)
-        else
-            vim.notify(
-                "Error reloading init.lua. Check messages.",
-                vim.log.levels.ERROR
-            )
-        end
-    end,
+  group = 'NvimConfigReload',
+  pattern = vim.fn.stdpath('config') .. "/init.lua",   -- Use stdpath for config
+  callback = function()
+    -- Use pcall to catch errors during source
+    local status_ok, _ = pcall(vim.cmd, 'source %')
+    if status_ok then
+      vim.notify("init.lua reloaded successfully!", vim.log.levels.INFO)
+    else
+      vim.notify(
+        "Error reloading init.lua. Check messages.",
+        vim.log.levels.ERROR
+      )
+    end
+  end,
 })
 
-print("init.lua loaded successfully!") -- Final confirmation

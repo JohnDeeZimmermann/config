@@ -35,7 +35,10 @@
     "LaTeX": {
       "show_edit_predictions": true,
       "language_servers": ["codebook", "..."],
-      "formatter": "language_server"
+      "formatter": "language_server",
+      "inlay_hints": {
+        "show_value_hints": false
+      }
     },
     "C": {
       "show_edit_predictions": false
@@ -107,7 +110,6 @@
     }
   },
   "base_keymap": "JetBrains",
-  "buffer_font_family": "Comic Code Ligatures",
   "vim_mode": true,
   "vim": {
     "toggle_relative_line_numbers": true
@@ -143,7 +145,7 @@
         }
       }
     },
-    "default_profile": "ask",
+    "default_profile": "write",
     "inline_assistant_model": {
       "provider": "copilot_chat",
       "model": "gpt-4.1"
@@ -168,15 +170,26 @@
     "metrics": false
   },
   "wrap_guides": [120],
-  "ui_font_size": 16,
-  "buffer_font_size": 17.0,
+  "ui_font_size": 15,
+  // "buffer_font_family": "Comic Code Ligatures",
+  // "buffer_font_size": 15,
+
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 15,
+  "buffer_font_weight": 500,
+  "buffer_line_height": "standard",
+  "buffer_font_features": {
+
+  },
+
   "terminal": {
-    "font_size": 13
+    "font_size": 13,
+    "font_fallbacks": ["ComicShannsMono Nerd Font Mono"]
   },
   "theme": {
     "mode": "system",
     "dark": "Catppuccin Macchiato",
-    "light": "One Light"
+    "light": "Catppuccin Latte"
   },
   "git": {
     "inline_blame": {
@@ -213,5 +226,11 @@
   "project_panel": {
     "indent_size": 15,
     "dock": "right"
+  },
+  "file_finder": {
+    "include_ignored": false,
+    "git_status": true,
+    "modal_max_width": "large",
+    "skip_focus_for_active_in_search": true
   }
 }

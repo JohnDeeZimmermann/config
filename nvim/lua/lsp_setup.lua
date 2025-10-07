@@ -29,7 +29,6 @@ else
       -- Can be: "automatic", "prompt", false
       automatic_installation = true,
     })
-    vim.notify("Mason and mason-lspconfig setup complete", vim.log.levels.INFO)
   end
 end
 
@@ -65,7 +64,7 @@ else
       vim.keymap.set('n', '<leader>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, opts)
-      vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+      vim.keymap.set('n', '<leader>p', vim.lsp.buf.type_definition, opts)
       vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
       vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
@@ -111,7 +110,6 @@ else
 
       lspconfig[server_name].setup(config)
     end
-    vim.notify("nvim-lspconfig setup complete", vim.log.levels.INFO)
   end
 end
 
@@ -195,5 +193,4 @@ else
     })
   })
 
-  vim.notify("nvim-cmp setup complete", vim.log.levels.INFO)
 end

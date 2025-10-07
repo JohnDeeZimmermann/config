@@ -1,5 +1,4 @@
 -- Telescope Setup
-print("Setting up Telescope...")
 local telescope_setup_status_ok, telescope = pcall(require, "telescope")
 if not telescope_setup_status_ok then
   vim.notify("Error loading telescope", vim.log.levels.ERROR)
@@ -24,8 +23,6 @@ else
         }
       },
     })
-
-    vim.notify("Telescope setup complete", vim.log.levels.INFO)
 
     vim.keymap.set('n', '<leader>ff', builtin.find_files, {
       noremap = true,
@@ -53,6 +50,5 @@ else
       desc = "[F]ind [O]ld Files (History)",
     })
 
-    vim.notify("Telescope keymaps set", vim.log.levels.INFO)
   end
 end

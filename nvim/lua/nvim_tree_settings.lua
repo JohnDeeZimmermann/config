@@ -21,7 +21,7 @@ else
             enable = true,
         },
         view = {
-            width = 30, -- Set the width of the tree
+            width = 50, -- Set the width of the tree
         },
         renderer = {
             icons = {
@@ -52,5 +52,4 @@ else
         disable_netrw = true,
         hijack_netrw = true,
     })
-    vim.notify("Nvim-tree setup complete", vim.log.levels.INFO) -- Confirmation
 end

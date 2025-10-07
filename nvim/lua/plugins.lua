@@ -24,6 +24,7 @@ vim.cmd [[ Plug 'projekt0n/github-nvim-theme' ]] -- Add this line for Gruvbox
 vim.cmd [[ Plug 'nvim-lua/plenary.nvim' ]] -- Dependency for Telescope
 vim.cmd [[ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' } ]] -- Telescope itself
 vim.cmd [[ Plug 'ThePrimeagen/harpoon', { 'branch': 'harpoon2' } ]] -- Harpoon for bookmarks
+vim.cmd [[ Plug 'catppuccin/nvim', { 'as': 'catppuccin' } ]]
 
 -- LSP & Completion PlugInstall
 vim.cmd [[ Plug 'neovim/nvim-lspconfig' ]]     -- Core LSP configuration helper

@@ -18,6 +18,7 @@ vim.opt.ignorecase = true      -- Ignore case in search patterns
 vim.opt.smartcase = true       -- Override ignorecase if pattern contains uppercase letters
 vim.opt.scrolloff = 14          -- Keep n lines visible above/below cursor
 vim.g.mapleader = " "          -- sets leader to spacebar
+vim.opt.clipboard = 'unnamedplus'
 
 -- Remapping to öäü keymaps
 vim.keymap.set({ "n", "v" }, "ö", "]")
@@ -25,3 +26,7 @@ vim.keymap.set({ "n", "v" }, "ä", "[")
 
 vim.keymap.set("n", "öm", "]m")
 vim.keymap.set("n", "äm", "[m")
+
+vim.keymap.set({ "n", "v"}, "<leader>d", '"_d')
+vim.cmd([[nnoremap <leader>D "_D]])
+vim.cmd([[vnoremap <leader>D "_D]])

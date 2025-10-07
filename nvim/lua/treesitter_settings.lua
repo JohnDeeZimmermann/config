@@ -60,5 +60,4 @@ else
     --   },
     -- },
   })
-  vim.notify("Nvim-treesitter setup complete", vim.log.levels.INFO) -- Confirmation
 end
