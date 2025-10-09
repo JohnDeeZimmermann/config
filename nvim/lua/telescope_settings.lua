@@ -16,10 +16,10 @@ else
       extensions = {
         -- Configuration for Telescope extensions (like fzf-native) would go here
         fzf = {
-          fuzzy = true,                             -- false will only do exact matching
-          override_generic_sorter = true,           -- override the generic sorter
-          override_file_sorter = true,              -- override the file sorter
-          case_mode = "smart_case",                 -- "smart_case", "ignore_case", "respect_case"
+          fuzzy = true,                   -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true,    -- override the file sorter
+          case_mode = "smart_case",       -- "smart_case", "ignore_case", "respect_case"
         }
       },
     })
@@ -44,11 +44,19 @@ else
       silent = true,
       desc = "[F]ind [H]elp Tags",
     })
-    vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {
+    vim.keymap.set('n', '<leader>fo', function()
+      builtin.oldfiles({
+        cwd_only = true
+      })
+    end, {
       noremap = true,
       silent = true,
       desc = "[F]ind [O]ld Files (History)",
     })
-
+    vim.keymap.set({ 'n', 'i' }, '<D-e>', function()
+      builtin.oldfiles({
+        cwd_only = true
+      })
+    end, { noremap = true, silent = true, desc = "Find recent files" })
   end
 end
