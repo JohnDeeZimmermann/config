@@ -20,12 +20,10 @@ vim.cmd [[ Plug 'nvim-tree/nvim-tree.lua' ]]
 vim.cmd [[ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } ]]
 vim.cmd [[ Plug 'folke/tokyonight.nvim' ]]
 vim.cmd [[ Plug 'nvim-mini/mini.animate' ]]
-vim.cmd [[ Plug 'gruvbox-community/gruvbox' ]]                         -- Add this line for Gruvbox
-vim.cmd [[ Plug 'projekt0n/github-nvim-theme' ]]                       -- Add this line for Gruvbox
 vim.cmd [[ Plug 'nvim-lua/plenary.nvim' ]]                             -- Dependency for Telescope
 vim.cmd [[ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' } ]] -- Telescope itself
 vim.cmd [[ Plug 'ThePrimeagen/harpoon', { 'branch': 'harpoon2' } ]]    -- Harpoon for bookmarks
-vim.cmd [[ Plug 'catppuccin/nvim', { 'as': 'catppuccin' } ]]
+vim.cmd [[ Plug 'm4xshen/autoclose.nvim' ]]
 
 -- LSP & Completion PlugInstall
 vim.cmd [[ Plug 'neovim/nvim-lspconfig' ]]             -- Core LSP configuration helper
@@ -38,6 +36,11 @@ vim.cmd [[ Plug 'hrsh7th/cmp-buffer' ]]                -- Buffer text completion
 vim.cmd [[ Plug 'hrsh7th/cmp-path' ]]                  -- File path completion source
 vim.cmd [[ Plug 'hrsh7th/cmp-cmdline' ]]               -- Command line completion source
 vim.cmd [[ Plug 'f-person/auto-dark-mode.nvim']]
+
+-- Themes
+vim.cmd [[ Plug 'catppuccin/nvim', { 'as': 'catppuccin' } ]]
+vim.cmd [[ Plug 'gruvbox-community/gruvbox' ]]
+vim.cmd [[ Plug 'projekt0n/github-nvim-theme' ]]
 
 -- Finish plugin declaration
 vim.call('plug#end')
