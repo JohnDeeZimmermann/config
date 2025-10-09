@@ -140,7 +140,7 @@ else
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),            -- Trigger completion
+      ['<D-Space>'] = cmp.mapping.complete(),            -- Trigger completion
       ['<C-e>'] = cmp.mapping.abort(),                   -- Close completion window
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept selected suggestion
       -- Navigate suggestions

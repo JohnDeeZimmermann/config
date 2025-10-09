@@ -18,6 +18,10 @@
   },
   "show_edit_predictions": false,
   "languages": {
+    "TypeScript": {
+      "show_edit_predictions": true,
+      "tab_size": 4
+    },
     "Rust": {
       "show_edit_predictions": false
     },

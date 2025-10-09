@@ -8,7 +8,7 @@ require('auto-dark-mode').setup({
 
     -- Override the default function for when light mode is detected
     set_light_mode = function()
-      vim.cmd('colorscheme catppuccin-frappe')
+      vim.cmd('colorscheme catppuccin-latte')
     end,
   })
   -- Initialize auto-dark-mode.nvim
