@@ -2,8 +2,8 @@
 vim.opt.number = true          -- Show line numbers
 vim.opt.relativenumber = true  -- Show relative line numbers
 vim.opt.cursorline = true      -- Highlight current line
-vim.opt.tabstop = 2            -- Number of spaces a tab equals
-vim.opt.shiftwidth = 2         -- Number of spaces to insert for indentation
+vim.opt.tabstop = 4            -- Number of spaces a tab equals
+vim.opt.shiftwidth = 4         -- Number of spaces to insert for indentation
 vim.opt.expandtab = true       -- Use spaces instead of tabs
 vim.opt.autoindent = true      -- Copy indent from current line when starting a new line
 vim.opt.smartindent = true     -- Do smart autoindenting

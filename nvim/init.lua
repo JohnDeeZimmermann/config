@@ -14,6 +14,7 @@ require("supermaven_settings")
 require("auto_dark_settings")
 require("mini-animate_settings")
 require("autoclose_settings")
+require("neovide_settings")
 
 -- Autocommand to reload init.lua on save
 -- Use a group to prevent duplicate autocommands on reload
