@@ -49,7 +49,8 @@
       // Bookmarks
       "space n": "vim::ToggleMarksView",
       "n": ["workspace::SendKeystrokes", "`"],
-      "N": ["workspace::SendKeystrokes", "`"]
+      "N": ["workspace::SendKeystrokes", "`"],
+      "M": ["workspace::SendKeystrokes", "m"]
     }
   },
   {

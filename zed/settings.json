@@ -7,6 +7,22 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "search": {
+    "include_ignored": false
+  },
+  "bottom_dock_layout": "full",
+  "tab_bar": {
+    "show": true,
+
+  },
+  "agent_servers": {
+    "claude": {
+      "default_mode": "acceptEdits"
+    }
+  },
+  "git_panel": {
+    "dock": "right"
+  },
   "context_servers": {
     "mcp-server-context7": {
       "source": "extension",
@@ -16,8 +32,11 @@
       }
     }
   },
-  "show_edit_predictions": false,
+  "show_edit_predictions": true,
   "languages": {
+    "Markdown": {
+      "show_edit_predictions": true
+    },
     "TypeScript": {
       "show_edit_predictions": true,
       "tab_size": 4
@@ -38,7 +57,6 @@
     },
     "LaTeX": {
       "show_edit_predictions": true,
-      "language_servers": ["codebook", "..."],
       "formatter": "language_server",
       "inlay_hints": {
         "show_value_hints": false
@@ -155,8 +173,8 @@
       "model": "gpt-4.1"
     },
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-thinking"
+      "provider": "openrouter",
+      "model": "mistralai/mistral-medium-3.1"
     },
     "commit_message_model": {
       "provider": "copilot_chat",
@@ -179,7 +197,7 @@
   // "buffer_font_size": 15,
 
   "buffer_font_family": "JetBrains Mono",
-  "buffer_font_size": 15,
+  "buffer_font_size": 15.0,
   "buffer_font_weight": 500,
   "buffer_line_height": "standard",
   "buffer_font_features": {
@@ -226,7 +244,7 @@
     "agent_review": false, // Whether to show agent review buttons
     "code_actions": false // Whether to show code action buttons
   },
-  "agent_font_size": 16.0,
+  "agent_ui_font_size": 14.0,
   "project_panel": {
     "indent_size": 15,
     "dock": "right"
