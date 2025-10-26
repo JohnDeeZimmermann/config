@@ -1,48 +1,69 @@
--- Ensure vim-plug is installed
-local plug_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/vim-plug'
-local plug_vim = plug_path .. '/plug.vim'
-if vim.fn.empty(vim.fn.glob(plug_vim)) > 0 then
-  vim.fn.system({
-    'curl',
-    '-fLo',
-    plug_vim,
-    '--create-dirs',
-    'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
-  })
-  vim.cmd('autocmd VimEnter * PlugInstall --sync | source $MYVIMRC')
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out,                            "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Plug configuration
-vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
--- Declare plugins using vim.cmd
-vim.cmd [[ Plug 'nvim-tree/nvim-tree.lua' ]]
-vim.cmd [[ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } ]]
-vim.cmd [[ Plug 'folke/tokyonight.nvim' ]]
-vim.cmd [[ Plug 'nvim-mini/mini.animate' ]]
-vim.cmd [[ Plug 'nvim-lua/plenary.nvim' ]]                             -- Dependency for Telescope
-vim.cmd [[ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' } ]] -- Telescope itself
-vim.cmd [[ Plug 'ThePrimeagen/harpoon', { 'branch': 'harpoon2' } ]]    -- Harpoon for bookmarks
-vim.cmd [[ Plug 'm4xshen/autoclose.nvim' ]]
-vim.cmd [[ Plug 'lervag/vimtex' ]]
-vim.cmd [[ Plug 'norcalli/nvim-colorizer.lua' ]]
+-- Setup lazy.nvim
+require("lazy").setup({
+    spec = {
+        { "nvim-tree/nvim-tree.lua" },
+        { "nvim-tree/nvim-web-devicons" },
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-telescope/telescope.nvim" },
+        {
+            'nvim-treesitter/nvim-treesitter',
+            lazy = false,
+            branch = 'main',
+            build = ':TSUpdate'
+        },
+        { "folke/tokyonight.nvim" },
+        { "nvim-mini/mini.animate" },
+        { "ThePrimeagen/harpoon",               branch = "harpoon2", },
+        { "m4xshen/autoclose.nvim" },
+        { "lervag/vimtex" },
+        { "norcalli/nvim-colorizer.lua" },
+        { "lukas-reineke/indent-blankline.nvim" },
+        { "olimorris/codecompanion.nvim" },
+        { "saghen/blink.cmp", version = '1.*' },
 
--- LSP & Completion PlugInstall
-vim.cmd [[ Plug 'neovim/nvim-lspconfig' ]]             -- Core LSP configuration helper
-vim.cmd [[ Plug 'supermaven-inc/supermaven-nvim' ]]
-vim.cmd [[ Plug 'williamboman/mason.nvim' ]]           -- LSP installer/manager
-vim.cmd [[ Plug 'williamboman/mason-lspconfig.nvim' ]] -- Bridge mason & lspconfig
-vim.cmd [[ Plug 'hrsh7th/nvim-cmp' ]]                  -- Completion engine
-vim.cmd [[ Plug 'hrsh7th/cmp-nvim-lsp' ]]              -- LSP completion source for nvim-cmp
-vim.cmd [[ Plug 'hrsh7th/cmp-buffer' ]]                -- Buffer text completion source
-vim.cmd [[ Plug 'hrsh7th/cmp-path' ]]                  -- File path completion source
-vim.cmd [[ Plug 'hrsh7th/cmp-cmdline' ]]               -- Command line completion source
-vim.cmd [[ Plug 'f-person/auto-dark-mode.nvim']]
+        -- LSP & Completion PluginInstall
+        { "neovim/nvim-lspconfig" },
+        { "williamboman/mason.nvim" },
+        { "williamboman/mason-lspconfig.nvim" },
+        { 'supermaven-inc/supermaven-nvim' },
+        { "hrsh7th/nvim-cmp" },
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-path" },
+        { "hrsh7th/cmp-cmdline" },
+        { "f-person/auto-dark-mode.nvim" },
 
--- Themes
-vim.cmd [[ Plug 'catppuccin/nvim', { 'as': 'catppuccin' } ]]
-vim.cmd [[ Plug 'gruvbox-community/gruvbox' ]]
-vim.cmd [[ Plug 'projekt0n/github-nvim-theme' ]]
-
--- Finish plugin declaration
-vim.call('plug#end')
+        -- Themes
+        { "catppuccin/nvim" },
+        { "gruvbox-community/gruvbox" },
+        { "projekt0n/github-nvim-theme" },
+    },
+    -- Configure any other settings here. See the documentation for more details.
+    -- colorscheme that will be used when installing plugins.
+    install = { colorscheme = { "catppuccin-macchiato" } },
+    -- automatically check for plugin updates
+    checker = { enabled = true },
+})

@@ -20,6 +20,7 @@ vim.opt.scrolloff = 14          -- Keep n lines visible above/below cursor
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.signcolumn = 'yes'
 vim.g.mapleader = " "          -- sets leader to spacebar
+vim.g.maplocalleader = "\\"
 
 -- Remapping to öäü keymaps
 vim.keymap.set({ "n", "v" }, "ö", "]")

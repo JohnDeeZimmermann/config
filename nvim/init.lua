@@ -3,7 +3,7 @@ require("settings")
 require("plugins")
 
 -- PLUGIN SETTINGS FOLLOWING (Load AFTER plug#end)
-vim.cmd('colorscheme github_dark')
+vim.cmd('colorscheme catppuccin-macchiato')
 
 require("nvim_tree_settings")
 require("treesitter_settings")
@@ -15,6 +15,9 @@ require("auto_dark_settings")
 require("mini-animate_settings")
 require("autoclose_settings")
 require("neovide_settings")
+require("code_companion_settings")
+require("small_plugins")
+require("blink_settings")
 
 -- Autocommand to reload init.lua on save
 -- Use a group to prevent duplicate autocommands on reload
