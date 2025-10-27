@@ -1,0 +1,6 @@
+[font]
+size = 15
+
+[[font.normal]]
+family = "JetBrains Mono"
+style = "W600"
