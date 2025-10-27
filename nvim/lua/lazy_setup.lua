@@ -26,9 +26,9 @@ require("lazy").setup({
     spec = {
         { "nvim-tree/nvim-tree.lua" },
         { "nvim-tree/nvim-web-devicons" },
-        { "nvim-lua/plenary.nvim" },
+        { "nvim-lua/plenary.nvim", lazy=false, priority=10000 },
         { "nvim-telescope/telescope.nvim" },
-        { import = 'lazy.treesitter' },
+        { import = 'plugins.treesitter' },
         { "folke/tokyonight.nvim" },
         { "nvim-mini/mini.animate" },
         { "ThePrimeagen/harpoon",               branch = "harpoon2", },
@@ -38,7 +38,7 @@ require("lazy").setup({
         { "lukas-reineke/indent-blankline.nvim" },
         -- { "olimorris/codecompanion.nvim" },
         { "saghen/blink.cmp",                   version = '1.*',     lazy = false, enabled = false },
-        { import = 'lazy.lazygit' },
+        { import = 'plugins.lazygit' },
         
         -- LSP & Completion PluginInstall
         { "neovim/nvim-lspconfig" },
