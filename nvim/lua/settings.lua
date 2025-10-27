@@ -16,7 +16,7 @@ vim.opt.hlsearch = true        -- Highlight search results
 vim.opt.incsearch = true       -- Show search results incrementally
 vim.opt.ignorecase = true      -- Ignore case in search patterns
 vim.opt.smartcase = true       -- Override ignorecase if pattern contains uppercase letters
-vim.opt.scrolloff = 14          -- Keep n lines visible above/below cursor
+vim.opt.scrolloff = 20          -- Keep n lines visible above/below cursor
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.signcolumn = 'yes'
 vim.g.mapleader = " "          -- sets leader to spacebar
@@ -33,4 +33,4 @@ vim.keymap.set({ "n", "v"}, "<leader>c", '"_c')
 vim.keymap.set({ "n", "v"}, "<leader>C", '"_C')
 vim.keymap.set({ "n", "v"}, "<leader>d", '"_d')
 vim.keymap.set({ "n", "v"}, "<leader>D", '"_D')
-
+vim.keymap.set({ "n", "v"}, "x", '"_x')

@@ -1,5 +1,5 @@
 if vim.g.neovide then
-    vim.g.neovide_cursor_animation_length = 0.03
+    vim.g.neovide_cursor_animation_length = 0.02
     vim.g.neovide_cursor_trail_size = 0.3
     vim.g.neovide_input_use_logo = true
     vim.g.neovide_refresh_rate = 120
@@ -11,5 +11,5 @@ if vim.g.neovide then
     vim.g.neovide_remember_window_size = true
     vim.g.neovide_floating_window_alpha = 0.95
     vim.g.neovide_floating_window_alpha = 0.95
-    vim.opt.guifont = { "JetBrains Mono", ":h15" }
+    vim.opt.guifont = { "JetBrains Mono,Noto Color Emoji", ":h15" }
 end

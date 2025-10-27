@@ -34,6 +34,38 @@ else
 end
 
 
+local opts = { buffer = bufnr, noremap = true, silent = true }
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+vim.keymap.set('n', '<leader>gh', vim.lsp.buf.hover, opts)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+vim.keymap.set({'n', 'i'}, '<C-p>', vim.lsp.buf.signature_help, opts)             -- Use Ctrl-k for signature help
+vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+vim.keymap.set('n', '<leader>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+end, opts)
+vim.keymap.set('n', '<D-p>', vim.lsp.buf.type_definition, opts)
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+vim.keymap.set('n', '<leader>ft', function()
+    vim.lsp.buf.format({ async = true })
+end, opts)             
+
+-- Diagnostics keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', 'gh', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+
+-- Set highlight group for undercurls
+vim.cmd [[ highlight LspDiagnosticsSignError guifg=Red gui=bold ]]
+vim.cmd [[ highlight LspDiagnosticsSignWarning guifg=Yellow gui=bold ]]
+vim.cmd [[ highlight LspDiagnosticsSignInformation guifg=Blue gui=bold ]]
+vim.cmd [[ highlight LspDiagnosticsSignHint guifg=Cyan gui=bold ]]
+
+
 -- LSP Configuration (nvim-lspconfig)
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
@@ -54,37 +86,6 @@ else
 
             -- Mappings.
             -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local opts = { buffer = bufnr, noremap = true, silent = true }
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts) -- Use Ctrl-k for signature help
-            vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
-            vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
-            vim.keymap.set('n', '<leader>wl', function()
-                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-            end, opts)
-            vim.keymap.set('n', '<leader>p', vim.lsp.buf.type_definition, opts)
-            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-            vim.keymap.set('n', '<leader>ft', function()
-                vim.lsp.buf.format({ async = true })
-            end, opts) -- Format code
-            -- Example for init.lua
-
-            -- Diagnostics keymaps
-            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-            vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-            vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
-            vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
-
-            -- Set highlight group for undercurls
-            vim.cmd [[ highlight LspDiagnosticsSignError guifg=Red gui=bold ]]
-            vim.cmd [[ highlight LspDiagnosticsSignWarning guifg=Yellow gui=bold ]]
-            vim.cmd [[ highlight LspDiagnosticsSignInformation guifg=Blue gui=bold ]]
-            vim.cmd [[ highlight LspDiagnosticsSignHint guifg=Cyan gui=bold ]]
 
             if client.server_capabilities.inlayHintProvider then
                 vim.lsp.inlay_hint.enable(true)
@@ -118,79 +119,79 @@ vim.diagnostic.config({
     update_in_insert = true,
 })
 
--- -- Completion Engine Setup (nvim-cmp)
--- local cmp_status_ok, cmp = pcall(require, "cmp")
--- if not cmp_status_ok then
---     vim.notify("Error loading nvim-cmp", vim.log.levels.ERROR)
--- else
---     local cmp_types = require('cmp.types') -- For mapping configuration
---
---     cmp.setup({
---         snippet = {
---             -- REQUIRED - you must specify a snippet engine
---             -- Uncomment the following lines if you installed LuaSnip
---             -- expand = function(args)
---             --   require('luasnip').lsp_expand(args.body)
---             -- end,
---         },
---         window = {
---             -- Optional: Add borders to completion and documentation windows
---             completion = cmp.config.window.bordered(),
---             documentation = cmp.config.window.bordered(),
---         },
---         mapping = cmp.mapping.preset.insert({
---             ['<C-b>'] = cmp.mapping.scroll_docs(-4),
---             ['<C-f>'] = cmp.mapping.scroll_docs(4),
---             ['<D-Space>'] = cmp.mapping.complete(),      -- Trigger completion
---             ['<C-e>'] = cmp.mapping.abort(),             -- Close completion window
---             ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept selected suggestion
---             -- Navigate suggestions
---             ['<S-Tab>'] = cmp.mapping(function(fallback)
---                 if cmp.visible() then
---                     cmp.select_next_item()
---                     -- You could tabby completion here if you have it installed
---                     -- elseif require('luasnip').expand_or_jumpable() then
---                     --   require('luasnip').expand_or_jump()
---                 else
---                     fallback() -- Fallback to default Tab behavior
---                 end
---             end, { "i", "s" }), -- i = insert mode, s = select mode
---         }),
---         -- Sources for completion
---         sources = cmp.config.sources({
---             { name = 'nvim_lsp' }, -- Source for LSP suggestions
---             -- { name = 'luasnip' }, -- Source for snippets (uncomment if LuaSnip is installed)
---             { name = 'buffer' }, -- Source for text in current buffer
---             { name = 'path' }, -- Source for file paths
---         }),
---         -- Optional: Configure appearance (requires nerd font for icons)
---         -- formatting = {
---         --   format = require('lspkind').cmp_format({
---         --     mode = 'symbol_text', -- show only symbol annotations
---         --     maxwidth = 50, -- prevent the popup from becoming too wide
---         --     ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
---         --     -- Show source name for each completion item
---         --     -- before = function (entry, vim_item)
---         --     --   vim_item.menu = "["..string.upper(entry.source.name).."]"
---         --     --   return vim_item
---         --     -- end
---         --   })
---         -- },
---     })
---
---     -- Set up completion for command line
---     cmp.setup.cmdline('/', {
---         mapping = cmp.mapping.preset.cmdline(),
---         sources = {
---             { name = 'buffer' }
---         }
---     })
---     cmp.setup.cmdline(':', {
---         mapping = cmp.mapping.preset.cmdline(),
---         sources = cmp.config.sources({
---             { name = 'path' }
---         }, {
---             { name = 'cmdline' }
---         })
---     })
--- end
+-- Completion Engine Setup (nvim-cmp)
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
+    vim.notify("Error loading nvim-cmp", vim.log.levels.ERROR)
+else
+    local cmp_types = require('cmp.types') -- For mapping configuration
+
+    cmp.setup({
+        snippet = {
+            -- REQUIRED - you must specify a snippet engine
+            -- Uncomment the following lines if you installed LuaSnip
+            -- expand = function(args)
+            --   require('luasnip').lsp_expand(args.body)
+            -- end,
+        },
+        window = {
+            -- Optional: Add borders to completion and documentation windows
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
+        },
+        mapping = cmp.mapping.preset.insert({
+            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
+            ['<D-Space>'] = cmp.mapping.complete(),      -- Trigger completion
+            ['<C-e>'] = cmp.mapping.abort(),             -- Close completion window
+            ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept selected suggestion
+            -- Navigate suggestions
+            ['<S-Tab>'] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item()
+                    -- You could tabby completion here if you have it installed
+                    -- elseif require('luasnip').expand_or_jumpable() then
+                    --   require('luasnip').expand_or_jump()
+                else
+                    fallback() -- Fallback to default Tab behavior
+                end
+            end, { "i", "s" }), -- i = insert mode, s = select mode
+        }),
+        -- Sources for completion
+        sources = cmp.config.sources({
+            { name = 'nvim_lsp' }, -- Source for LSP suggestions
+            -- { name = 'luasnip' }, -- Source for snippets (uncomment if LuaSnip is installed)
+            { name = 'buffer' }, -- Source for text in current buffer
+            { name = 'path' }, -- Source for file paths
+        }),
+        -- Optional: Configure appearance (requires nerd font for icons)
+        -- formatting = {
+        --   format = require('lspkind').cmp_format({
+        --     mode = 'symbol_text', -- show only symbol annotations
+        --     maxwidth = 50, -- prevent the popup from becoming too wide
+        --     ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+        --     -- Show source name for each completion item
+        --     -- before = function (entry, vim_item)
+        --     --   vim_item.menu = "["..string.upper(entry.source.name).."]"
+        --     --   return vim_item
+        --     -- end
+        --   })
+        -- },
+    })
+
+    -- Set up completion for command line
+    cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+            { name = 'buffer' }
+        }
+    })
+    cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+            { name = 'path' }
+        }, {
+            { name = 'cmdline' }
+        })
+    })
+end

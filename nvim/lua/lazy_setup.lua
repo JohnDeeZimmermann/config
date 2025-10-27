@@ -38,11 +38,31 @@ require("lazy").setup({
         { "nvim-mini/mini.animate" },
         { "ThePrimeagen/harpoon",               branch = "harpoon2", },
         { "m4xshen/autoclose.nvim" },
-        { "lervag/vimtex" },
+        { "lervag/vimtex",                      lazy = false },
         { "norcalli/nvim-colorizer.lua" },
         { "lukas-reineke/indent-blankline.nvim" },
-        { "olimorris/codecompanion.nvim" },
-        { "saghen/blink.cmp", version = '1.*' },
+        -- { "olimorris/codecompanion.nvim" },
+        { "saghen/blink.cmp",                   version = '1.*',     lazy = false, enabled = false },
+        {
+            "kdheepak/lazygit.nvim",
+            lazy = true,
+            cmd = {
+                "LazyGit",
+                "LazyGitConfig",
+                "LazyGitCurrentFile",
+                "LazyGitFilter",
+                "LazyGitFilterCurrentFile",
+            },
+            -- optional for floating window border decoration
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+            },
+            -- setting the keybinding for LazyGit with 'keys' is recommended in
+            -- order to load the plugin when the command is run for the first time
+            keys = {
+                { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+            }
+        },
 
         -- LSP & Completion PluginInstall
         { "neovim/nvim-lspconfig" },
