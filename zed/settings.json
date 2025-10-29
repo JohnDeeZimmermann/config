@@ -7,6 +7,8 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "horizontal_scroll_margin": 10.0,
+  "agent_buffer_font_size": 14.0,
   "search": {
     "include_ignored": false
   },
@@ -136,7 +138,7 @@
   "vim": {
     "toggle_relative_line_numbers": true
   },
-  "vertical_scroll_margin": 12,
+  "vertical_scroll_margin": 20.0,
   "scroll_beyond_last_line": "one_page",
   "agent": {
     "profiles": {
@@ -197,7 +199,7 @@
   // "buffer_font_size": 15,
 
   "buffer_font_family": "JetBrains Mono",
-  "buffer_font_size": 15.0,
+  "buffer_font_size": 16.0,
   "buffer_font_weight": 500,
   "buffer_line_height": "standard",
   "buffer_font_features": {
@@ -210,7 +212,7 @@
   },
   "theme": {
     "mode": "system",
-    "dark": "Catppuccin Macchiato",
+    "dark": "Tokyo Night Storm",
     "light": "Catppuccin Latte"
   },
   "git": {

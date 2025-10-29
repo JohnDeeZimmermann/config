@@ -74,9 +74,10 @@
     }
   },
   {
-    "context": "(Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting) || ProjectPanel",
+    "context": "(Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting) || ProjectPanel || GitPanel",
     "bindings": {
-      "space f t": "project_panel::ToggleFocus"
+      "space t": "project_panel::ToggleFocus",
+      "space l g": "git_panel::ToggleFocus"
     }
   },
   {

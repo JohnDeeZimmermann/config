@@ -26,20 +26,19 @@ require("lazy").setup({
     spec = {
         { "nvim-tree/nvim-tree.lua" },
         { "nvim-tree/nvim-web-devicons" },
-        { "nvim-lua/plenary.nvim", lazy=false, priority=10000 },
+        { "nvim-lua/plenary.nvim",              lazy = false,        priority = 10000 },
         { "nvim-telescope/telescope.nvim" },
         { import = 'plugins.treesitter' },
-        { "folke/tokyonight.nvim" },
-        { "nvim-mini/mini.animate" },
         { "ThePrimeagen/harpoon",               branch = "harpoon2", },
         { "m4xshen/autoclose.nvim" },
         { "lervag/vimtex",                      lazy = false },
         { "norcalli/nvim-colorizer.lua" },
         { "lukas-reineke/indent-blankline.nvim" },
-        -- { "olimorris/codecompanion.nvim" },
-        { "saghen/blink.cmp",                   version = '1.*',     lazy = false, enabled = false },
+        { "saghen/blink.cmp",                   version = '1.*',     lazy = false,    enabled = false },
         { import = 'plugins.lazygit' },
-        
+        { import = 'plugins.mini-animate' },
+        -- { "olimorris/codecompanion.nvim" },
+
         -- LSP & Completion PluginInstall
         { "neovim/nvim-lspconfig" },
         { "williamboman/mason.nvim" },
@@ -52,10 +51,7 @@ require("lazy").setup({
         { "hrsh7th/cmp-cmdline" },
         { "f-person/auto-dark-mode.nvim" },
 
-        -- Themes
-        { "catppuccin/nvim" },
-        { "gruvbox-community/gruvbox" },
-        { "projekt0n/github-nvim-theme" },
+        { import = "plugins.themes" }
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.

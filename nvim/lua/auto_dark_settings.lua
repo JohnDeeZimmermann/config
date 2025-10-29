@@ -3,7 +3,7 @@ require('auto-dark-mode').setup({
     fallback = "dark", -- or "light"
 
     set_dark_mode = function()
-      vim.cmd('colorscheme catppuccin-macchiato')
+      vim.cmd('colorscheme tokyonight')
     end,
 
     -- Override the default function for when light mode is detected
