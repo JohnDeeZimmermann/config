@@ -10,6 +10,7 @@
     "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
     "bindings": {
       // Tab things. Almost as good as harpoon.
+      "space h": "pane::TogglePinTab",
       "ctrl-1": ["pane::ActivateItem", 0],
       "ctrl-2": ["pane::ActivateItem", 1],
       "ctrl-3": ["pane::ActivateItem", 2],
@@ -54,6 +55,22 @@
     }
   },
   {
+    "context": "Editor && (vim_mode == normal) && !VimWaiting",
+    "bindings": {
+      "backspace": ["workspace::SendKeystrokes", "\" _ d d"],
+      "ctrl-j": "editor::MoveLineDown",
+      "ctrl-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == visual) && !VimWaiting",
+    "bindings": {
+      "backspace": ["workspace::SendKeystrokes", "\" _ d"],
+      "ctrl-j": "editor::MoveLineDown",
+      "ctrl-k": "editor::MoveLineUp"
+    }
+  },
+  {
     "context": "Editor",
     "bindings": {
       "secondary-space": "editor::ShowCompletions",
@@ -74,7 +91,7 @@
     }
   },
   {
-    "context": "(Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting) || ProjectPanel || GitPanel",
+    "context": "((Editor || ProjectPanel || GitPanel) && (vim_mode == normal || vim_mode == visual) && !VimWaiting) ",
     "bindings": {
       "space t": "project_panel::ToggleFocus",
       "space l g": "git_panel::ToggleFocus"
