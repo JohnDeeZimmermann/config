@@ -40,6 +40,7 @@ require("lazy").setup({
         -- { "olimorris/codecompanion.nvim" },
 
         -- LSP & Completion PluginInstall
+        { import = "plugins.java" },
         { "neovim/nvim-lspconfig" },
         { "williamboman/mason.nvim" },
         { "williamboman/mason-lspconfig.nvim" },
@@ -50,6 +51,7 @@ require("lazy").setup({
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
         { "f-person/auto-dark-mode.nvim" },
+        { "OXY2DEV/markview.nvim", lazy = false },
 
         { import = "plugins.themes" }
     },

@@ -2,7 +2,6 @@
 require("settings")
 require("lazy_setup")
 
--- PLUGIN SETTINGS FOLLOWING (Load AFTER plug#end)
 vim.cmd('colorscheme catppuccin-macchiato')
 
 require("nvim_tree_settings")

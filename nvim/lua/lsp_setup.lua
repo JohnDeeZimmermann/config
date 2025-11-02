@@ -23,7 +23,9 @@ else
                 "texlab",      -- For LaTeX
                 "jdtls",       -- For Java
                 "clangd",      -- For C/C++
-                "basedpyright" -- For python
+                "basedpyright", -- For python
+                "rust_analyzer", -- For Rust
+                "kotlin_lsp"  -- For Kotlin
             },
             -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
             -- This setting has no relation with the `ensure_installed` setting.
