@@ -33,7 +33,7 @@ else
             enable = true,
         },
         view = {
-            width = 50, -- Set the width of the tree
+            width = 100, -- Set the width of the tree
             side = "right"
         },
         renderer = {

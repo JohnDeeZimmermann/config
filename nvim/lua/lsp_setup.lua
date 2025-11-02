@@ -14,18 +14,18 @@ else
             -- Add any servers you commonly use here. Find names using :Mason
             -- Example:
             ensure_installed = {
-                "lua_ls",      -- For Lua
-                "ts_ls",       -- For TypeScript/JavaScript
-                "html",        -- For HTML
-                "cssls",       -- For CSS
-                "jsonls",      -- For JSON
-                "zls",         -- For ZIG
-                "texlab",      -- For LaTeX
-                "jdtls",       -- For Java
-                "clangd",      -- For C/C++
+                "lua_ls",       -- For Lua
+                "vtsls",        -- Typescript
+                "html",         -- For HTML
+                "cssls",        -- For CSS
+                "jsonls",       -- For JSON
+                "zls",          -- For ZIG
+                "texlab",       -- For LaTeX
+                "clangd",       -- For C/C++
                 "basedpyright", -- For python
                 "rust_analyzer", -- For Rust
-                "kotlin_lsp"  -- For Kotlin
+                -- "kotlin_lsp",   -- For Kotlin
+                -- "codebook"
             },
             -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
             -- This setting has no relation with the `ensure_installed` setting.
@@ -41,7 +41,7 @@ vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 vim.keymap.set('n', '<leader>gh', vim.lsp.buf.hover, opts)
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-vim.keymap.set({'n', 'i'}, '<C-p>', vim.lsp.buf.signature_help, opts)             -- Use Ctrl-k for signature help
+vim.keymap.set({ 'n', 'i' }, '<C-p>', vim.lsp.buf.signature_help, opts) -- Use Ctrl-k for signature help
 vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
 vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
 vim.keymap.set('n', '<leader>wl', function()
@@ -53,7 +53,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 vim.keymap.set('n', '<leader>ft', function()
     vim.lsp.buf.format({ async = true })
-end, opts)             
+end, opts)
 
 -- Diagnostics keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -90,7 +90,7 @@ else
             -- See `:help vim.lsp.*` for documentation on any of the below functions
 
             if client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable(true)
+                vim.lsp.inlay_hint.enable(false)
             end
         end
 
@@ -144,8 +144,8 @@ else
         mapping = cmp.mapping.preset.insert({
             ['<C-b>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
-            ['<D-Space>'] = cmp.mapping.complete(),      -- Trigger completion
-            ['<C-e>'] = cmp.mapping.abort(),             -- Close completion window
+            ['<D-Space>'] = cmp.mapping.complete(),            -- Trigger completion
+            ['<C-e>'] = cmp.mapping.abort(),                   -- Close completion window
             ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept selected suggestion
             -- Navigate suggestions
             ['<S-Tab>'] = cmp.mapping(function(fallback)
@@ -155,7 +155,7 @@ else
                     -- elseif require('luasnip').expand_or_jumpable() then
                     --   require('luasnip').expand_or_jump()
                 else
-                    fallback() -- Fallback to default Tab behavior
+                    fallback()  -- Fallback to default Tab behavior
                 end
             end, { "i", "s" }), -- i = insert mode, s = select mode
         }),
@@ -163,8 +163,8 @@ else
         sources = cmp.config.sources({
             { name = 'nvim_lsp' }, -- Source for LSP suggestions
             -- { name = 'luasnip' }, -- Source for snippets (uncomment if LuaSnip is installed)
-            { name = 'buffer' }, -- Source for text in current buffer
-            { name = 'path' }, -- Source for file paths
+            { name = 'buffer' },   -- Source for text in current buffer
+            { name = 'path' },     -- Source for file paths
         }),
         -- Optional: Configure appearance (requires nerd font for icons)
         -- formatting = {
