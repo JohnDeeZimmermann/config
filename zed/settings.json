@@ -14,8 +14,7 @@
   },
   "bottom_dock_layout": "full",
   "tab_bar": {
-    "show": true,
-
+    "show": true
   },
   "agent_servers": {
     "claude": {
@@ -141,9 +140,19 @@
   "vertical_scroll_margin": 20.0,
   "scroll_beyond_last_line": "one_page",
   "agent": {
+    "default_profile": "write",
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-5-thinking"
+    },
     "inline_assistant_model": {
-      "provider": "anthropic",
-      "model": "claude-haiku-4-5-latest"
+      "provider": "zed.dev",
+      "model": "grok-4-fast-reasoning"
+    },
+    "commit_message_model": {
+      "provider": "copilot_chat",
+      "model": "GPT-4.1"
     },
     "model_parameters": []
   },
@@ -162,22 +171,20 @@
   // "buffer_font_family": "Comic Code Ligatures",
   // "buffer_font_size": 15,
 
-  "buffer_font_family": "JetBrains Mono",
-  "buffer_font_size": 16.0,
+  "buffer_font_family": "Comic Code",
+  "buffer_font_size": 14.5,
   "buffer_font_weight": 500,
   "buffer_line_height": "standard",
-  "buffer_font_features": {
-
-  },
+  "buffer_font_features": {},
 
   "terminal": {
     "font_size": 13,
     "font_fallbacks": ["ComicShannsMono Nerd Font Mono"]
   },
   "theme": {
-    "mode": "system",
-    "dark": "Tokyo Night Storm",
-    "light": "Catppuccin Latte"
+    "dark": "Tokyo Maple",
+    "light": "Catppuccin Latte",
+    "mode": "system"
   },
   "git": {
     "inline_blame": {
@@ -216,9 +223,29 @@
     "dock": "right"
   },
   "file_finder": {
-    "include_ignored": false,
+    "include_ignored": "indexed",
     "git_status": true,
     "modal_max_width": "large",
     "skip_focus_for_active_in_search": true
+  },
+  "language_models": {
+    "openai": {
+      "available_models": [
+        {
+          "name": "gpt-5",
+          "display_name": "gpt-5 high",
+          "reasoning_effort": "high",
+          "max_tokens": 272000,
+          "max_completion_tokens": 20000
+        },
+        {
+          "name": "gpt-5",
+          "display_name": "gpt-5 medium",
+          "reasoning_effort": "medium",
+          "max_tokens": 272000,
+          "max_completion_tokens": 20000
+        }
+      ]
+    }
   }
 }
