@@ -37,6 +37,7 @@ require("lazy").setup({
         { "saghen/blink.cmp",                   version = '1.*',     lazy = false,    enabled = false },
         { import = 'plugins.lazygit' },
         { import = 'plugins.mini-animate' },
+        { import = 'plugins.mini-diff' },
         -- { "olimorris/codecompanion.nvim" },
 
         -- LSP & Completion PluginInstall
@@ -53,7 +54,8 @@ require("lazy").setup({
         { "f-person/auto-dark-mode.nvim" },
         { "OXY2DEV/markview.nvim", lazy = false },
 
-        { import = "plugins.themes" }
+        { import = "plugins.themes" },
+        { import = "plugin.codecompanion" }
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.

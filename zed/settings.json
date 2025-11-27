@@ -140,15 +140,42 @@
   "vertical_scroll_margin": 20.0,
   "scroll_beyond_last_line": "one_page",
   "agent": {
+    "profiles": {
+      "ask": {
+        "name": "Ask",
+        "tools": {
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "thinking": true,
+          "web_search": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "mcp-server-context7": {
+            "tools": {
+              "resolve-library-id": true,
+              "get-library-docs": true
+            }
+          }
+        }
+      }
+    },
     "default_profile": "write",
     "always_allow_tool_actions": true,
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-5-thinking"
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-thinking-latest"
     },
     "inline_assistant_model": {
-      "provider": "zed.dev",
-      "model": "grok-4-fast-reasoning"
+      "provider": "anthropic",
+      "model": "claude-haiku-4-5-latest"
     },
     "commit_message_model": {
       "provider": "copilot_chat",
@@ -171,8 +198,8 @@
   // "buffer_font_family": "Comic Code Ligatures",
   // "buffer_font_size": 15,
 
-  "buffer_font_family": "Comic Code",
-  "buffer_font_size": 14.5,
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 15.0,
   "buffer_font_weight": 500,
   "buffer_line_height": "standard",
   "buffer_font_features": {},
@@ -182,7 +209,7 @@
     "font_fallbacks": ["ComicShannsMono Nerd Font Mono"]
   },
   "theme": {
-    "dark": "Tokyo Maple",
+    "dark": "One Dark - Darkened",
     "light": "Catppuccin Latte",
     "mode": "system"
   },

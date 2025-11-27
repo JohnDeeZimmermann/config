@@ -16,4 +16,5 @@ require("neovide_settings")
 require("code_companion_settings")
 require("small_plugins")
 require("blink_settings")
+require("file_navigation")
 
