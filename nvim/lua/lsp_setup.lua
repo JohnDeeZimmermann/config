@@ -98,8 +98,8 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<D-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Enter confirms and selects first item by default
+        ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             else
@@ -112,6 +112,7 @@ cmp.setup({
         { name = 'buffer' },
         { name = 'path' },
     }),
+    -- preselect = cmp.PreselectMode.Item, -- Select first item by default
 })
 
 cmp.setup.cmdline('/', {

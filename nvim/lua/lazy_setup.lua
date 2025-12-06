@@ -52,10 +52,11 @@ require("lazy").setup({
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
         { "f-person/auto-dark-mode.nvim" },
-        { "OXY2DEV/markview.nvim", lazy = false },
+        { "windwp/nvim-ts-autotag" },
+        { "OXY2DEV/markview.nvim",              lazy = false },
 
         { import = "plugins.themes" },
-        { import = "plugin.codecompanion" }
+        { import = "plugins.codecompanion" }
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
