@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Check if we have the right number of arguments
+if [ $# -ne 2 ]; then
+    echo "Usage: au-file.sh <file> <flag>"
+    echo "Flags: -c (css), -h (html), -t (typescript)"
+    exit 1
+fi
+
+FILE="$1"
+FLAG="$2"
+
+# Get directory and base name
+DIR=$(dirname "$FILE")
+FILENAME=$(basename "$FILE")
+
+if [[ "$FILENAME" =~ \.module\.css$ ]]; then
+    BASE="${FILENAME%.module.css}"
+elif [[ "$FILENAME" =~ \.css$ ]]; then
+    BASE="${FILENAME%.css}"
+else
+    BASE="${FILENAME%.*}"
+fi
+
+# Construct target file based on flag
+case "$FLAG" in
+    -c)
+        TARGET="$DIR/$BASE.module.css"
+        ;;
+    -h)
+        TARGET="$DIR/$BASE.html"
+        ;;
+    -t)
+        TARGET="$DIR/$BASE.ts"
+        ;;
+    *)
+        echo "Invalid flag: $FLAG"
+        echo "Flags: -c (css), -h (html), -t (typescript)"
+        exit 1
+        ;;
+esac
+
+# Check if target file exists, otherwise return input file
+if [ -f "$TARGET" ]; then
+    echo "$TARGET"
+else
+    echo "$FILE"
+fi

@@ -1,0 +1,240 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+//
+// Example:
+[
+  {
+    "label": "to HTML",
+    "command": "zed $(/Users/johnzimmermann/tools/au-file $ZED_FILE -h)",
+
+    "use_new_terminal": false,
+    "allow_concurrent_runs": true,
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+    "show_summary": true,
+    "show_command": true
+  },
+  {
+    "label": "to CSS",
+    "command": "zed $(/Users/johnzimmermann/tools/au-file $ZED_FILE -c)",
+
+    "use_new_terminal": false,
+    "allow_concurrent_runs": true,
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+    "show_summary": true,
+    "show_command": true
+  },
+  {
+    "label": "to TS",
+    "command": "zed $(/Users/johnzimmermann/tools/au-file $ZED_FILE -t)",
+
+    "use_new_terminal": false,
+    "allow_concurrent_runs": true,
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+    "show_summary": true,
+    "show_command": true
+  },
+  {
+    "label": "harpoon add",
+    "command": "echo $ZED_RELATIVE_FILE >> .zed/harpoon.txt",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon open 1",
+    "command": "cat .zed/harpoon.txt | sed -n '1p' | xargs zed",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon open 2",
+    "command": "cat .zed/harpoon.txt | sed -n '2p' | xargs zed",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon open 3",
+    "command": "cat .zed/harpoon.txt | sed -n '3p' | xargs zed",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon open 4",
+    "command": "cat .zed/harpoon.txt | sed -n '4p' | xargs zed",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon open 5",
+    "command": "cat .zed/harpoon.txt | sed -n '5p' | xargs zed",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon open 6",
+    "command": "cat .zed/harpoon.txt | sed -n '6p' | xargs zed",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon set 1",
+    "command": "if [ $(wc -l < .zed/harpoon.txt) -lt 1 ]; then echo $ZED_RELATIVE_FILE >> .zed/harpoon.txt; else sed -i '' '1s|.*|'$ZED_RELATIVE_FILE'|' .zed/harpoon.txt; fi",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon set 2",
+    "command": "if [ $(wc -l < .zed/harpoon.txt) -lt 2 ]; then echo $ZED_RELATIVE_FILE >> .zed/harpoon.txt; else sed -i '' '2s|.*|'$ZED_RELATIVE_FILE'|' .zed/harpoon.txt; fi",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon set 3",
+    "command": "if [ $(wc -l < .zed/harpoon.txt) -lt 3 ]; then echo $ZED_RELATIVE_FILE >> .zed/harpoon.txt; else sed -i '' '3s|.*|'$ZED_RELATIVE_FILE'|' .zed/harpoon.txt; fi",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon set 4",
+    "command": "if [ $(wc -l < .zed/harpoon.txt) -lt 4 ]; then echo $ZED_RELATIVE_FILE >> .zed/harpoon.txt; else sed -i '' '4s|.*|'$ZED_RELATIVE_FILE'|' .zed/harpoon.txt; fi",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon set 5",
+    "command": "if [ $(wc -l < .zed/harpoon.txt) -lt 5 ]; then echo $ZED_RELATIVE_FILE >> .zed/harpoon.txt; else sed -i '' '5s|.*|'$ZED_RELATIVE_FILE'|' .zed/harpoon.txt; fi",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon set 6",
+    "command": "if [ $(wc -l < .zed/harpoon.txt) -lt 6 ]; then echo $ZED_RELATIVE_FILE >> .zed/harpoon.txt; else sed -i '' '6s|.*|'$ZED_RELATIVE_FILE'|' .zed/harpoon.txt; fi",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "harpoon edit",
+    "command": "zed .zed/harpoon.txt",
+    "reveal": "never",
+    "hide": "always",
+    "shell": {
+      "with_arguments": {
+        "program": "/bin/zsh",
+        "args": ["--no-rcs"]
+      }
+    },
+  },
+  {
+    "label": "C++: Run (Generic)",
+    "command": "compiledb make; rc=$?; if [ $rc -eq 0 ]; then ./program; rc=$?; fi; echo Return Code: $rc"
+  },
+  {
+    "label": "Rust: Run (cargo run)",
+    "command": "cargo run"
+  },
+  {
+    "label": "Latex: Build",
+    "command": "make build"
+  },
+  {
+    "label": "Latex: Build Clean",
+    "command": "make clean ; make build"
+  }
+]

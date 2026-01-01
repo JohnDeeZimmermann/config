@@ -1,0 +1,22 @@
+NAME=$1
+WD=$(pwd)
+
+mkdir "$NAME"
+cd "$NAME"
+touch "$NAME.html"
+touch "$NAME.module.css"
+touch "$NAME.module.css"
+
+kebab_to_pascal() {
+    echo $1 | perl -pe 's/(^|-)(\w)/\U$2/g'
+}
+
+PASCAL=$(kebab_to_pascal $NAME)
+
+cat >> "$NAME.ts" << EOF
+export class $PASCAL {
+  attached() {}
+}
+EOF
+
+cd $WD
